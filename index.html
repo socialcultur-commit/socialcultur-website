@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SocialCultur builds narrative, brand, website, GTM, sales, and investor storytelling systems for ambitious founders.">
+  <title>SocialCultur | The Story Powerhouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <canvas id="interactive-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="brand" href="#hero">SocialCultur<span>.</span></a>
+    <div class="desktop-links">
+      <a class="active" href="#services">Strategy</a>
+      <a href="#services">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="pill-button compact" href="#contact">Inquire</a>
+      <button class="icon-button mobile-only" id="mobile-menu-btn" type="button" aria-label="Toggle menu">
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#services">Strategy</a>
+    <a href="#services">Work</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a class="pill-button" href="#contact">Inquire</a>
+  </div>
+
+  <main>
+    <section class="hero section-shell" id="hero">
+      <div class="hero-content reveal">
+        <h1>The product isn't <span>the problem.</span></h1>
+        <p class="hero-kicker">The story around it is.</p>
+        <p class="hero-copy">Most founders can build. Very few can make the right people feel it. That's the gap we close.</p>
+        <a class="cta-button" href="#contact">
+          <span>Let's find out where your story breaks</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="narrative-section" aria-labelledby="narrative-title">
+      <div class="section-shell">
+        <div class="narrative-lockup reveal">
+          <div class="background-statement" aria-hidden="true">
+            <span>IT'S NOT THE PRODUCT.</span>
+            <span>IT'S THE NARRATIVE.</span>
+          </div>
+          <h2 id="narrative-title">IT WAS NEVER THE PRODUCT.</h2>
+        </div>
+        <p class="narrative-copy reveal">In a world of noise, clarity is the only weapon that cuts through. We don't just market products; we engineer belief systems.</p>
+      </div>
+    </section>
+
+    <section class="stats section-shell" aria-label="SocialCultur numbers">
+      <div class="stats-grid">
+        <div class="reveal">
+          <strong class="teal">10+</strong>
+          <span>Years Mastery</span>
+        </div>
+        <div class="reveal">
+          <strong class="violet">7</strong>
+          <span>Industry Verticals</span>
+        </div>
+        <div class="reveal">
+          <strong class="orange">F500</strong>
+          <span>Experience</span>
+        </div>
+        <div class="reveal">
+          <strong>3+</strong>
+          <span>Global Markets</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-shell" id="services">
+      <div class="section-heading reveal">
+        <div>
+          <span class="eyebrow">Ecosystem</span>
+          <h2>Our Capabilities</h2>
+        </div>
+        <p>Full-stack narrative engineering across the entire digital lifecycle.</p>
+      </div>
+
+      <div class="capabilities-grid">
+        <article class="glass-card reveal">
+          <img src="assets/icons/Story%20%26%20Positioning.png" alt="" width="48" height="48">
+          <h3>Story &amp; Positioning</h3>
+          <p>We define the core why that makes your product inevitable in its category.</p>
+        </article>
+        <article class="glass-card reveal">
+          <img src="assets/icons/Brand%20Identity.png" alt="" width="48" height="48">
+          <h3>Brand Identity</h3>
+          <p>Visual systems built for high-fidelity impact and cinematic presence.</p>
+        </article>
+        <article class="glass-card reveal">
+          <img src="assets/icons/Website%20%26%20Digital.png" alt="" width="48" height="48">
+          <h3>Website &amp; Digital</h3>
+          <p>Immersive digital experiences that convert attention into conviction.</p>
+        </article>
+        <article class="glass-card reveal">
+          <img src="assets/icons/GTM%20Strategy.png" alt="" width="48" height="48">
+          <h3>GTM Strategy</h3>
+          <p>Precision-engineered market entry designed for maximum disruption.</p>
+        </article>
+        <article class="glass-card reveal">
+          <img src="assets/icons/Sales%20Enablement.png" alt="" width="48" height="48">
+          <h3>Sales Enablement</h3>
+          <p>Arming your sales team with the narrative weapons to win every room.</p>
+        </article>
+        <article class="glass-card reveal">
+          <img src="assets/icons/Investor%20Narrative.png" alt="" width="48" height="48">
+          <h3>Investor Narrative</h3>
+          <p>Strategic fundraising decks that tell a story of exponential growth.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="models">
+      <div class="section-shell">
+        <div class="center-heading reveal">
+          <h2>Deployment Models</h2>
+          <p>Choose the intensity of our collaboration.</p>
+        </div>
+        <div class="models-grid">
+          <article class="model-card teal-border reveal">
+            <div>
+              <span class="eyebrow teal">Short Burst</span>
+              <h3>Narrative Sprint</h3>
+              <p>A 2-week deep dive to audit your current story and identify the critical friction points holding back growth.</p>
+              <ul>
+                <li><span class="material-symbols-outlined">check_circle</span> Story Audit</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Category Definition</li>
+                <li><span class="material-symbols-outlined">check_circle</span> One-Page Manifesto</li>
+              </ul>
+            </div>
+            <a href="#contact">Inquire Sprint</a>
+          </article>
+          <article class="model-card violet-border featured reveal">
+            <div>
+              <span class="eyebrow violet">Most Popular</span>
+              <h3>Foundation Build</h3>
+              <p>A 3-month total architectural rebuild of your brand identity, messaging, and digital home.</p>
+              <ul>
+                <li><span class="material-symbols-outlined">check_circle</span> Full Identity Design</li>
+                <li><span class="material-symbols-outlined">check_circle</span> High-Conversion Site</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Pitch Narrative</li>
+              </ul>
+            </div>
+            <a class="filled" href="#contact">Start Building</a>
+          </article>
+          <article class="model-card orange-border reveal">
+            <div>
+              <span class="eyebrow orange">Strategic Partner</span>
+              <h3>Launch &amp; Scale</h3>
+              <p>Ongoing strategic support to act as your external Creative Director and Story Architect.</p>
+              <ul>
+                <li><span class="material-symbols-outlined">check_circle</span> GTM Execution</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Ad Creative Direction</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Investor Relations</li>
+              </ul>
+            </div>
+            <a href="#contact">Join Partner Track</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="founders section-shell">
+      <div class="founder-visual reveal">
+        <img alt="Abstract 3D sculpture with glass planes and glowing accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIBDDe3RtkqzK1LYf242sd1a8w4t8A_GarZTQJSq1a2msaQRFLgBtn6JKu7DkDIZrxCDCEcddKPeHGOhcMkLDWqJ9YSfTfZT5fIEx_61no7zzT1Pzlu4uonk2NYIepL7lbZZWHkF3R-VqSXqHNY_XxpXAU8ejpupO0H4hDvHC0JBmq6tP6Zg80X7RNSoU0MhAG48ez1J0G1NjT1QBRdKvV_og6fZJIvzr7BecXMydXWjLfZY4PQJZ97JdgcaT54QksemEGib8ZhfA">
+      </div>
+      <div class="founder-copy reveal">
+        <span class="eyebrow orange">The Visionaries</span>
+        <h2>We build what we couldn't find.</h2>
+        <p>SocialCultur was born out of frustration. We saw too many transformative technologies die in the shadows of mediocre storytelling. We decided to build a studio that values intelligence as much as aesthetic.</p>
+        <blockquote>
+          <p>"The world doesn't move because of features. It moves because of feelings."</p>
+          <cite>- Marcus V., Founding Partner</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <div class="contact-card reveal">
+        <div class="center-heading">
+          <h2>Ready to shift?</h2>
+          <p>The right story starts with a single conversation.</p>
+        </div>
+        <form id="contact-form">
+          <div class="form-grid">
+            <label>
+              <span>Full Name</span>
+              <input name="name" type="text" placeholder="John Galt" required>
+            </label>
+            <label>
+              <span>Email Address</span>
+              <input name="email" type="email" placeholder="john@objective.com" required>
+            </label>
+          </div>
+          <label>
+            <span>What's the gap?</span>
+            <textarea name="message" rows="4" placeholder="Tell us about the project, the vision, and where the story breaks..." required></textarea>
+          </label>
+          <button class="submit-button" type="submit">Initialize Transmission</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#hero">SocialCultur<span>.</span></a>
+    <a href="#contact">Connect</a>
+    <p>&copy; 2026 SocialCultur. Built for Visionaries.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

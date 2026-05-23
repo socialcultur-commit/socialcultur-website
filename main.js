@@ -100,6 +100,65 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
 
+const trackedSections = [...document.querySelectorAll("#services, #models, #contact")];
+const navLinks = [...document.querySelectorAll('.desktop-links a[href^="#"], .mobile-menu a[href^="#"]:not(.pill-button)')];
+
+function setActiveNavigation(sectionId) {
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${sectionId}`;
+    link.classList.toggle("active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "true");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function updateActiveNavigation() {
+  const activationLine = window.innerHeight * 0.38;
+  let currentSection = null;
+
+  trackedSections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= activationLine) {
+      currentSection = section;
+    }
+  });
+
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+    currentSection = trackedSections[trackedSections.length - 1];
+  }
+
+  if (currentSection) setActiveNavigation(currentSection.id);
+}
+
+function setActiveNavigationFromHash() {
+  const sectionId = window.location.hash.replace("#", "");
+  if (!trackedSections.some((section) => section.id === sectionId)) return false;
+  setActiveNavigation(sectionId);
+  return true;
+}
+
+let navigationFrame = 0;
+window.addEventListener("scroll", () => {
+  if (navigationFrame) return;
+  navigationFrame = requestAnimationFrame(() => {
+    updateActiveNavigation();
+    navigationFrame = 0;
+  });
+}, { passive: true });
+
+window.addEventListener("resize", updateActiveNavigation);
+window.addEventListener("hashchange", setActiveNavigationFromHash);
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    const sectionId = link.getAttribute("href").slice(1);
+    setActiveNavigation(sectionId);
+  });
+});
+
 const contactForm = document.getElementById("contact-form");
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -108,3 +167,4 @@ contactForm?.addEventListener("submit", (event) => {
 
 initCanvas();
 drawCanvas();
+if (!setActiveNavigationFromHash()) updateActiveNavigation();

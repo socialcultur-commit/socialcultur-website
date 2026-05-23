@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 112px;
 }
 
 body {
@@ -99,6 +100,20 @@ img {
 
 .brand span {
   color: var(--orange);
+  animation: brand-dot-blink 1.35s ease-in-out infinite;
+}
+
+@keyframes brand-dot-blink {
+  0%,
+  45%,
+  100% {
+    opacity: 1;
+  }
+
+  65%,
+  85% {
+    opacity: 0.18;
+  }
 }
 
 .desktop-links {
@@ -120,11 +135,13 @@ footer a:not(.brand) {
 
 .desktop-links a:hover,
 .desktop-links .active,
+.mobile-menu a.active,
 footer a:hover {
   color: var(--text);
 }
 
-.desktop-links .active {
+.desktop-links .active,
+.mobile-menu a.active {
   border-bottom: 2px solid var(--violet);
   padding-bottom: 5px;
 }

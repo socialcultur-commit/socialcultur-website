@@ -103,9 +103,9 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
 const trackedSections = [...document.querySelectorAll("#services, #models, #contact")];
 const navLinks = [...document.querySelectorAll('.desktop-links a[href^="#"], .mobile-menu a[href^="#"]:not(.pill-button)')];
 
-function setActiveNavigation(sectionId) {
+function setActiveNavigation(sectionId = null) {
   navLinks.forEach((link) => {
-    const isActive = link.getAttribute("href") === `#${sectionId}`;
+    const isActive = Boolean(sectionId) && link.getAttribute("href") === `#${sectionId}`;
     link.classList.toggle("active", isActive);
     if (isActive) {
       link.setAttribute("aria-current", "true");
@@ -130,11 +130,15 @@ function updateActiveNavigation() {
     currentSection = trackedSections[trackedSections.length - 1];
   }
 
-  if (currentSection) setActiveNavigation(currentSection.id);
+  setActiveNavigation(currentSection?.id);
 }
 
 function setActiveNavigationFromHash() {
   const sectionId = window.location.hash.replace("#", "");
+  if (sectionId === "hero") {
+    setActiveNavigation();
+    return true;
+  }
   if (!trackedSections.some((section) => section.id === sectionId)) return false;
   setActiveNavigation(sectionId);
   return true;

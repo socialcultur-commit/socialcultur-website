@@ -502,6 +502,7 @@ footer a:hover {
 }
 
 .model-card {
+  --model-accent: var(--violet);
   display: flex;
   min-height: 520px;
   flex-direction: column;
@@ -521,6 +522,7 @@ footer a:hover {
 }
 
 .teal-border {
+  --model-accent: var(--teal);
   border-top: 4px solid var(--teal);
 }
 
@@ -530,6 +532,7 @@ footer a:hover {
 }
 
 .violet-border {
+  --model-accent: var(--violet);
   border-top: 4px solid var(--violet);
 }
 
@@ -539,12 +542,37 @@ footer a:hover {
 }
 
 .orange-border {
+  --model-accent: var(--orange);
   border-top: 4px solid var(--orange);
 }
 
 .orange-border:hover {
   border-color: var(--orange);
   box-shadow: 0 24px 70px rgba(253, 117, 2, 0.16);
+}
+
+.model-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.duration-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 12px;
+  border: 1px solid var(--model-accent);
+  border-radius: 999px;
+  color: var(--model-accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .model-card ul {

@@ -93,7 +93,7 @@ function updateNarrativeScrollEffects() {
   if (!narrativeSection) return;
 
   if (reduceMotion.matches) {
-    narrativeSection.style.setProperty("--story-opacity", "0.16");
+    narrativeSection.style.setProperty("--story-opacity", "0.10");
     narrativeSection.style.setProperty("--story-y", "-34px");
     narrativeSection.style.setProperty("--story-scale", "0.94");
     narrativeSection.style.setProperty("--headline-opacity", "1");
@@ -110,7 +110,7 @@ function updateNarrativeScrollEffects() {
   const headlineEntry = mapProgress(progress, 0.44, 0.58);
   const copyEntry = mapProgress(progress, 0.56, 0.68);
 
-  narrativeSection.style.setProperty("--story-opacity", String(1 - storyExit * 0.82));
+  narrativeSection.style.setProperty("--story-opacity", String(1 - storyExit * 0.89));
   narrativeSection.style.setProperty("--story-y", `${-72 * storyExit}px`);
   narrativeSection.style.setProperty("--story-scale", String(1 - storyExit * 0.08));
   narrativeSection.style.setProperty("--headline-opacity", String(headlineEntry));

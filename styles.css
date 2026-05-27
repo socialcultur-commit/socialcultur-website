@@ -295,7 +295,7 @@ footer a:hover {
   position: relative;
   z-index: 1;
   overflow: visible;
-  min-height: 320vh;
+  min-height: 240vh;
   background: #0d0d0d;
   color: #e5e2e1;
 }
@@ -307,14 +307,14 @@ footer a:hover {
   overflow: hidden;
   min-height: 100vh;
   place-items: center;
-  padding: 128px 0;
+  padding: 64px 0;
 }
 
 .narrative-scene {
   position: relative;
   display: grid;
   width: 100%;
-  min-height: min(72vh, 720px);
+  min-height: min(60vh, 540px);
   place-items: center;
   isolation: isolate;
   text-align: center;
@@ -905,17 +905,17 @@ footer .footer-socials .footer-icon-link img {
   }
 
   .narrative-section {
-    min-height: 285vh;
+    min-height: 200vh;
     padding: 0;
   }
 
   .narrative-stage {
     min-height: 100vh;
-    padding: 88px 0;
+    padding: 40px 0;
   }
 
   .narrative-scene {
-    min-height: 62vh;
+    min-height: 50vh;
   }
 
   .narrative-lockup h2 {

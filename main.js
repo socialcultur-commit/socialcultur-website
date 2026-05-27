@@ -78,6 +78,47 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
+const narrativeSection = document.querySelector(".narrative-section");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function clamp(value, min = 0, max = 1) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function mapProgress(progress, start, end) {
+  return clamp((progress - start) / (end - start));
+}
+
+function updateNarrativeScrollEffects() {
+  if (!narrativeSection) return;
+
+  if (reduceMotion.matches) {
+    narrativeSection.style.setProperty("--story-opacity", "0.16");
+    narrativeSection.style.setProperty("--story-y", "-34px");
+    narrativeSection.style.setProperty("--story-scale", "0.94");
+    narrativeSection.style.setProperty("--headline-opacity", "1");
+    narrativeSection.style.setProperty("--headline-y", "0px");
+    narrativeSection.style.setProperty("--copy-opacity", "1");
+    narrativeSection.style.setProperty("--copy-y", "0px");
+    return;
+  }
+
+  const rect = narrativeSection.getBoundingClientRect();
+  const scrollableDistance = Math.max(narrativeSection.offsetHeight - window.innerHeight, 1);
+  const progress = clamp(-rect.top / scrollableDistance);
+  const storyExit = mapProgress(progress, 0.34, 0.5);
+  const headlineEntry = mapProgress(progress, 0.44, 0.58);
+  const copyEntry = mapProgress(progress, 0.56, 0.68);
+
+  narrativeSection.style.setProperty("--story-opacity", String(1 - storyExit * 0.82));
+  narrativeSection.style.setProperty("--story-y", `${-72 * storyExit}px`);
+  narrativeSection.style.setProperty("--story-scale", String(1 - storyExit * 0.08));
+  narrativeSection.style.setProperty("--headline-opacity", String(headlineEntry));
+  narrativeSection.style.setProperty("--headline-y", `${34 * (1 - headlineEntry)}px`);
+  narrativeSection.style.setProperty("--copy-opacity", String(copyEntry));
+  narrativeSection.style.setProperty("--copy-y", `${26 * (1 - copyEntry)}px`);
+}
+
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuButton = document.getElementById("mobile-menu-btn");
 const menuIcon = document.getElementById("menu-icon");
@@ -149,12 +190,21 @@ window.addEventListener("scroll", () => {
   if (navigationFrame) return;
   navigationFrame = requestAnimationFrame(() => {
     updateActiveNavigation();
+    updateNarrativeScrollEffects();
     navigationFrame = 0;
   });
 }, { passive: true });
 
-window.addEventListener("resize", updateActiveNavigation);
+window.addEventListener("resize", () => {
+  updateActiveNavigation();
+  updateNarrativeScrollEffects();
+});
 window.addEventListener("hashchange", setActiveNavigationFromHash);
+if (typeof reduceMotion.addEventListener === "function") {
+  reduceMotion.addEventListener("change", updateNarrativeScrollEffects);
+} else {
+  reduceMotion.addListener(updateNarrativeScrollEffects);
+}
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
@@ -172,3 +222,4 @@ contactForm?.addEventListener("submit", (event) => {
 initCanvas();
 drawCanvas();
 if (!setActiveNavigationFromHash()) updateActiveNavigation();
+updateNarrativeScrollEffects();

@@ -294,16 +294,27 @@ footer a:hover {
 .narrative-section {
   position: relative;
   z-index: 1;
-  overflow: hidden;
-  padding: 128px 0;
+  overflow: visible;
+  min-height: 320vh;
   background: #0d0d0d;
   color: #e5e2e1;
 }
 
-.narrative-lockup {
+.narrative-stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  overflow: hidden;
+  min-height: 100vh;
+  place-items: center;
+  padding: 128px 0;
+}
+
+.narrative-scene {
   position: relative;
   display: grid;
-  min-height: 390px;
+  width: 100%;
+  min-height: min(72vh, 720px);
   place-items: center;
   isolation: isolate;
   text-align: center;
@@ -312,26 +323,37 @@ footer a:hover {
 .background-statement {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 0;
+  justify-content: center;
   overflow: hidden;
-  color: rgba(204, 195, 212, 0.16);
+  color: rgba(245, 245, 242, 0.92);
   font-family: var(--font-display);
-  font-size: 4rem;
+  font-size: clamp(3.4rem, 8vw, 8rem);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: 0;
+  opacity: var(--story-opacity, 1);
+  text-shadow: 0 0 34px rgba(255, 255, 255, 0.18);
   text-transform: uppercase;
+  transform: translateY(var(--story-y, 0)) scale(var(--story-scale, 1));
+  transition: opacity 0.12s linear, transform 0.12s linear;
   user-select: none;
 }
 
 .background-statement span {
   width: 100%;
+  max-width: 1220px;
   white-space: normal;
+}
+
+.narrative-lockup {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
 }
 
 .narrative-lockup h2 {
@@ -340,15 +362,20 @@ footer a:hover {
   font-size: 7.5rem;
   font-weight: 700;
   line-height: 0.95;
+  opacity: var(--headline-opacity, 0);
   text-wrap: balance;
   text-shadow: 0 0 34px rgba(255, 255, 255, 0.24);
-  transform: rotate(-2deg);
+  transform: translateY(var(--headline-y, 42px)) rotate(-2deg);
+  transition: opacity 0.12s linear, transform 0.12s linear;
 }
 
 .narrative-copy {
   max-width: 680px;
   margin: 28px auto 0;
+  opacity: var(--copy-opacity, 0);
   text-align: center;
+  transform: translateY(var(--copy-y, 26px));
+  transition: opacity 0.12s linear, transform 0.12s linear;
 }
 
 .stats {
@@ -742,9 +769,9 @@ textarea:focus {
 footer {
   position: relative;
   z-index: 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   padding: 48px 64px;
   border-top: 1px solid var(--stroke);
@@ -752,8 +779,40 @@ footer {
 }
 
 footer p {
+  justify-self: end;
   margin: 0;
   color: var(--text-soft);
+  text-align: right;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 12px;
+}
+
+footer .footer-socials .footer-icon-link {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  color: #fff;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+footer .footer-socials .footer-icon-link:hover {
+  border-color: var(--violet);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+footer .footer-socials .footer-icon-link img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 .reveal {
@@ -845,8 +904,18 @@ footer p {
     padding: 88px 0;
   }
 
-  .narrative-lockup {
-    min-height: 330px;
+  .narrative-section {
+    min-height: 285vh;
+    padding: 0;
+  }
+
+  .narrative-stage {
+    min-height: 100vh;
+    padding: 88px 0;
+  }
+
+  .narrative-scene {
+    min-height: 62vh;
   }
 
   .narrative-lockup h2 {
@@ -854,8 +923,7 @@ footer p {
   }
 
   .background-statement {
-    justify-content: space-around;
-    font-size: 2.25rem;
+    font-size: 3rem;
     line-height: 1;
   }
 
@@ -894,8 +962,17 @@ footer p {
   }
 
   footer {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     padding: 40px 20px;
+    text-align: center;
+  }
+
+  footer p,
+  .footer-socials {
+    justify-self: center;
+  }
+
+  footer p {
     text-align: center;
   }
 }

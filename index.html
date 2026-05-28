@@ -205,7 +205,7 @@
           <h2>Let’s talk about your brand</h2>
           <p>The right story starts with a single conversation.</p>
         </div>
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form id="contact-form">
           <!-- Web3Forms Access Key -->
           <input type="hidden" name="access_key" value="8226dce3-8463-44c6-9d9b-171bbaaf133e">
 
@@ -253,6 +253,17 @@
     </div>
     <p>&copy; 2026 SocialCultur. Built for Visionaries.</p>
   </footer>
+
+  <!-- Toast Notification Popup -->
+  <div class="popup-message" id="popup-message" aria-hidden="true" role="alert">
+    <div class="popup-content">
+      <span class="material-symbols-outlined success-icon">check_circle</span>
+      <div class="popup-text">
+        <h3>Submission Received</h3>
+        <p>Thank you! Our team will connect with you shortly.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>

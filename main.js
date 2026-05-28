@@ -213,7 +213,56 @@ navLinks.forEach((link) => {
   });
 });
 
+const contactForm = document.getElementById("contact-form");
+const popupMessage = document.getElementById("popup-message");
 
+contactForm?.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  
+  const submitButton = contactForm.querySelector('.submit-button');
+  const originalText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending Protocol...";
+
+  const formData = new FormData(contactForm);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: json
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // Show custom popup toast
+      popupMessage.classList.add("show");
+      popupMessage.setAttribute("aria-hidden", "false");
+
+      // Reset form
+      contactForm.reset();
+
+      // Hide popup after 5 seconds
+      setTimeout(() => {
+        popupMessage.classList.remove("show");
+        popupMessage.setAttribute("aria-hidden", "true");
+      }, 5000);
+    } else {
+      alert("Submission failed: " + (result.message || "Unknown error"));
+    }
+  } catch (error) {
+    alert("Submission failed. Please check your network connection.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalText;
+  }
+});
 
 initCanvas();
 drawCanvas();

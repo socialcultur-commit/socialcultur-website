@@ -205,7 +205,12 @@
           <h2>Let’s talk about your brand</h2>
           <p>The right story starts with a single conversation.</p>
         </div>
-        <form id="contact-form">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="8226dce3-8463-44c6-9d9b-171bbaaf133e">
+          <!-- Optional: Redirect after successful submission -->
+          <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
           <div class="form-grid">
             <label>
               <span>Full Name</span>
@@ -216,10 +221,22 @@
               <input name="email" type="email" placeholder="john@objective.com" required>
             </label>
           </div>
+
+          <label>
+            <span>Engagement Model</span>
+            <select name="engagement_model" required>
+              <option value="" disabled selected hidden>Select Engagement Model</option>
+              <option value="Narrative Sprint">Narrative Sprint</option>
+              <option value="Foundation Build">Foundation Build</option>
+              <option value="Launch &amp; Scale">Launch &amp; Scale</option>
+            </select>
+          </label>
+
           <label>
             <span>Tell us about your business</span>
-            <textarea name="message" rows="4" placeholder="Tell us about your brand, project, or the kind of support you&apos;re looking for." required></textarea>
+            <textarea name="business_details" rows="4" placeholder="Tell us about your brand, project, or the kind of support you&apos;re looking for." required></textarea>
           </label>
+
           <button class="submit-button" type="submit">Start the conversation</button>
         </form>
       </div>

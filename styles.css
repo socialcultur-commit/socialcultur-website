@@ -728,6 +728,7 @@ label span {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 1px solid var(--stroke);
@@ -737,10 +738,27 @@ textarea {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input {
+input,
+select {
   min-height: 56px;
   border-radius: 999px;
   padding: 0 24px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 24px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+select option {
+  background-color: var(--pitch-black);
+  color: var(--text);
 }
 
 textarea {
@@ -751,6 +769,7 @@ textarea {
 }
 
 input:focus,
+select:focus,
 textarea:focus {
   border-color: var(--violet);
   box-shadow: 0 0 0 3px rgba(142, 95, 217, 0.18);
